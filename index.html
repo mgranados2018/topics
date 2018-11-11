@@ -29,22 +29,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var animals = ["dog", "panda", "firefly", "elephant"];
+        var animals = ["dog", "panda", "parrot", "elephant"];
 
 
-        // This function will call add the buttons. 
-        function renderButtons() {
+        $("#buttonselect").empty();
 
-            $("#buttonselect").empty();
-
-            for (var i = 0; i < animals.length; i++) {
-                var a = $("<button>");
-                a.addClass("animal-btn");
-                a.attr("data-name", animals[i]);
-                a.text(animals[i]);
-                $("#buttonselect").append(a);
-            }
+        for (var i = 0; i < animals.length; i++) {
+            var a = $("<button>");
+            a.addClass("animal-btn");
+            a.text(animals[i]);
+            a.attr("data-name", animals[i]);
+            $("#buttonselect").append(a);
         }
+
 
         // this funtion will add the buttons for each animal when they are clicked
         $("#find-animal").on("click", function (event) {
@@ -53,22 +50,21 @@
             var animal = $("#animal-input").val();
             var newbutton = $("<button>");
             newbutton.addClass("animal-btn");
-            newbutton.attr("data-name", animal);
             newbutton.text(animal)
+            newbutton.attr("data-name", animal);
             $("#buttonselect").append(newbutton);
 
 
             animals.push(animal);
-            renderButtons();
 
         });
 
-        // function displayAnimals() {
+
         $("#buttonselect").on("click", "button", function () {
             console.log("button");
             var animal = $(this).attr("data-name");
             console.log("Animal " + animal);
-            // var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=xIWadb1KHPbG2WWoEZbWFZfm75Zt5blx";
+
             var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
             $.ajax({
@@ -87,40 +83,32 @@
                     var animaldiv = $("<div>");
                     animaldiv.addClass("animaldiv")
 
-                    // var rating = response.data.rating;
-                    // var rating = $("<p>").text("Rating:" + results[i].rating);
-
                     var rating = results[i].rating;
 
                     console.log("Rating" + rating);
-
-
-                    var p = $("<p>").text("Rating" + rating);
 
                     var imageURLstill = $("<img>");
                     imageURLstill.addClass("gif");
 
                     console.log("image" + imageURLstill);
 
-                    //    imgURLstill = response.data.images.image_original_url;
-
                     imageURLstill.attr("src", results[i].images.fixed_height_still.url);
 
                     console.log("1st attr" + results[i].images.fixed_height_still.url);
 
                     imageURLstill.attr("data-still", results[i].images.fixed_height_still.url);
-                    imageURLstill.attr("data-animate", results[i].images.fixed_height_still.url);
-                    imageURLstill.attr("data-state", "data-still");
-                    animaldiv.append(rating);
+                    imageURLstill.attr("data-animate", results[i].images.fixed_height.url);
+                    imageURLstill.attr("data-state", "still");
+                    animaldiv.append("Rating:" + rating +"<br>");
                     animaldiv.append(imageURLstill);
 
                     $("#animals-view").prepend(animaldiv);
 
                 }
 
-                $("<img>").on("click", function () {
+                $(".gif").on("click", function () {
                     var state = $(this).attr("data-state");
-                    console.log("state: "+state);
+                    console.log("state: " + state);
                     if (state === "still") {
                         $(this).attr("src", $(this).attr("data-animate"));
                         $(this).attr("data-state", "animate");
@@ -133,19 +121,10 @@
                 });
 
 
+
             })
         })
 
-
-
-
-        // };
-
-
-        // $(document).on("click", ".animal-btn", displayAnimals);
-
-        // renderButtons();
-        // displayAnimals();
 
 
     </script>
