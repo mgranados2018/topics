@@ -1,30 +1,27 @@
-/* #animals-view {
-    padding: 20px;
-} */
-/* 
-.column {
-    width: 100%;
-    height: 100%;
-} */
+body{
+    background-image: url("https://image.freepik.com/free-photo/tropical-fern-leaves-jungle-leaves-green-pattern-background_38076-1470.jpg");
+    background-repeat: repeat;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.animal-form, #buttonselect {
+    margin: 10px 0px 10px 15px;
+    color: white;
+}
 
 .container-fluid {
     margin: 25, 5, 10, 5;
 }
-.gif {
-    /* height: 200px;
-    width: 200px; */
-    width: 100%;
-    height: 100%;   
-    padding: 10px 10px 10px 10px;
-    /* padding: 0 0 0 0; */
+
+h6 {
+    font-weight: bold;
 }
 
-/* .col-sm-3 {
-    background-image: url("https://lh3.googleusercontent.com/proxy/c6nLXffviyJBnecQzBLhofCmR8b5m0zQ35IYs87xd3O29HAzeQV7JLWF8PgIZVkwikxNoISD0zeYfNKXrmna49Y");
-    background-repeat: no-repeat;
-    height: 100% ;
-    width: 100%;
-} */
+.gif {
+    height: 250px;
+    width: 250px;
+    margin: 5px 5px 5px 5px;
+}
 
 .row {
     margin: 5px;

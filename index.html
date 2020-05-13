@@ -15,21 +15,18 @@
     <!-- buttons -->
     <div id="buttonselect"></div>
 
-    <!-- <button data-animal="cat"></button> -->
-
-
-    <form action="animal-form">
-        <label for="animal-input">Add animal</label>
+    <form class="animal-form">
+        <label for="animal-input">Add animal to list above</label>
         <input type="text" id="animal-input">
 
         <!-- button triggers for new animal button to be added -->
-        <input id="find-animal" type="submit" value="Animal Search">
+        <input class="btn btn-success" id="find-animal" type="submit" value="Animal Search">
+        <br>
+        <br>
+        <h6>Click on animal name button to see images. Click on image below to see gif!</h6>     
 
     </form>
 
-    <div class="container-fluid" id="showtime">
-
-    </div>
     <div class="container-fluid">
         <div class="row" id="animals-view"></div>        
     </div>
@@ -45,7 +42,7 @@
 
         for (var i = 0; i < animals.length; i++) {
             var a = $("<button>");
-            a.addClass("animal-btn");
+            a.addClass("btn btn-light");
             a.text(animals[i]);
             a.attr("data-name", animals[i]);
             $("#buttonselect").append(a);
@@ -58,7 +55,7 @@
 
             var animal = $("#animal-input").val();
             var newbutton = $("<button>");
-            newbutton.addClass("animal-btn");
+            newbutton.addClass("btn btn-light");
             newbutton.text(animal)
             newbutton.attr("data-name", animal);
             $("#buttonselect").append(newbutton);
@@ -96,9 +93,6 @@
 
                     var imageURLstill = $("<img>");
                     imageURLstill.addClass("gif");
-
-                    // var onclick = $("onclick"+"("+1+")");
-                    // console.log("onclick"+onclick)
 
                     console.log("image" + imageURLstill);
 
