@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
@@ -24,7 +27,13 @@
 
     </form>
 
-    <div id="animals-view"></div>
+    <div class="container-fluid" id="showtime">
+
+    </div>
+    <div class="container-fluid">
+        <div class="row" id="animals-view"></div>        
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -65,7 +74,7 @@
             var animal = $(this).attr("data-name");
             console.log("Animal " + animal);
 
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=4";
 
             $.ajax({
                 url: queryURL,
@@ -80,15 +89,16 @@
 
                 for (var i = 0; i < results.length; i++) {
 
+
+
                     var animaldiv = $("<div>");
-                    animaldiv.addClass("animaldiv")
-
-                    var rating = results[i].rating;
-
-                    console.log("Rating" + rating);
+                    animaldiv.addClass("col-sm-3")
 
                     var imageURLstill = $("<img>");
                     imageURLstill.addClass("gif");
+
+                    // var onclick = $("onclick"+"("+1+")");
+                    // console.log("onclick"+onclick)
 
                     console.log("image" + imageURLstill);
 
@@ -99,11 +109,11 @@
                     imageURLstill.attr("data-still", results[i].images.fixed_height_still.url);
                     imageURLstill.attr("data-animate", results[i].images.fixed_height.url);
                     imageURLstill.attr("data-state", "still");
-                    animaldiv.append("Rating:" + rating +"<br>");
+
                     animaldiv.append(imageURLstill);
+                    animaldiv.append(onclick);
 
                     $("#animals-view").prepend(animaldiv);
-
                 }
 
                 $(".gif").on("click", function () {
@@ -113,19 +123,15 @@
                         $(this).attr("src", $(this).attr("data-animate"));
                         $(this).attr("data-state", "animate");
                         console.log("animate works")
+
                     } else {
                         $(this).attr("src", $(this).attr("data-still"));
                         $(this).attr("data-state", "still");
 
                     }
                 });
-
-
-
             })
         })
-
-
 
     </script>
 

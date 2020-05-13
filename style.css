@@ -1,0 +1,32 @@
+/* #animals-view {
+    padding: 20px;
+} */
+/* 
+.column {
+    width: 100%;
+    height: 100%;
+} */
+
+.container-fluid {
+    margin: 25, 5, 10, 5;
+}
+.gif {
+    /* height: 200px;
+    width: 200px; */
+    width: 100%;
+    height: 100%;   
+    padding: 10px 10px 10px 10px;
+    /* padding: 0 0 0 0; */
+}
+
+/* .col-sm-3 {
+    background-image: url("https://lh3.googleusercontent.com/proxy/c6nLXffviyJBnecQzBLhofCmR8b5m0zQ35IYs87xd3O29HAzeQV7JLWF8PgIZVkwikxNoISD0zeYfNKXrmna49Y");
+    background-repeat: no-repeat;
+    height: 100% ;
+    width: 100%;
+} */
+
+.row {
+    margin: 5px;
+
+}
